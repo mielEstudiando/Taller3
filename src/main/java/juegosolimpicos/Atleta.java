@@ -6,10 +6,7 @@ public class Atleta {
 	private String nombre;
 	private String pais;
 	private int edad;
-	private ArrayList<Equipo> disciplinas;
-	public Equipo unnamed_Equipo_;
-	public Evento evento;
-
+	private ArrayList<Disciplina> disciplinas;
 	public String getNombre() {
 		return this.nombre;
 	}
@@ -35,26 +32,48 @@ public class Atleta {
 	}
 
 	public ArrayList<Disciplina> getDisciplinas() {
-		throw new UnsupportedOperationException();
+		return this.disciplinas;
 	}
 
 	public void setDisciplinas(ArrayList<Disciplina> disciplinas) {
-		throw new UnsupportedOperationException();
+		this.disciplinas = disciplinas;
 	}
 
 	public Atleta() {
-		throw new UnsupportedOperationException();
+	}
+	public Atleta(String nombre, String pais, int edad) {
+		this.nombre = nombre;
+		this.pais = pais;
+		this.edad = edad;
 	}
 
-	public void agregarDisciplina(Disciplina disciplina) {
-		throw new UnsupportedOperationException();
+	public Boolean agregarDisciplina(Disciplina disciplina) {
+		for (Disciplina disciplinaExistente : disciplinas){
+			if (disciplinaExistente.getNombre().equals(disciplina.getNombre())){
+				return false;
+			}
+		}
+		this.disciplinas.add(disciplina);
+		return true;
 	}
 
-	public void eliminarDisciplina(Disciplina disciplina) {
-		throw new UnsupportedOperationException();
+	public Boolean eliminarDisciplina(Disciplina disciplina) {
+		for (Disciplina disciplinaExistente : disciplinas){
+			if (disciplinaExistente.getNombre().equals(disciplina.getNombre())){
+				this.disciplinas.remove(disciplina);
+				return true;
+			}
+		}
+		return false;
 	}
 
 	public void verInfoAtleta() {
-		throw new UnsupportedOperationException();
+		System.out.println("Nombre: " + this.nombre);
+		System.out.println("Pais: " + this.pais);
+		System.out.println("Edad: " + this.edad);
+		System.out.println("Disciplinas:");
+		for (Disciplina disciplina : disciplinas){
+			System.out.println(disciplina.getNombre());
+		}
 	}
 }

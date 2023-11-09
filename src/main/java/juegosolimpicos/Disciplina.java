@@ -6,8 +6,6 @@ public class Disciplina {
 	private String nombre;
 	private int numeroparticipantes;
 	private String recordmundial;
-	public ArrayList<Atleta> atleta = new ArrayList<Atleta>();
-	public Evento evento;
 
 	public String getNombre() {
 		return this.nombre;
@@ -34,10 +32,17 @@ public class Disciplina {
 	}
 
 	public Disciplina() {
-		throw new UnsupportedOperationException();
+	}
+
+	public Disciplina(String nombre, String recordmundial, int numeroparticipantes) {
+		this.nombre = nombre;
+		this.numeroparticipantes = numeroparticipantes;
+		this.recordmundial = recordmundial;
 	}
 
 	public void verInfoDisciplina() {
-		throw new UnsupportedOperationException();
+		System.out.println("Nombre de disciplina: " + this.nombre);
+		System.out.println("Número de participantes: " + this.numeroparticipantes);
+		System.out.println("Record mundial: " + this.recordmundial);
 	}
 }

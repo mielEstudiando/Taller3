@@ -6,9 +6,6 @@ public class Equipo {
 	private String nombre;
 	private ArrayList<Atleta> atletas;
 	private Disciplina disciplina;
-	public ArrayList<Evento> evento = new ArrayList<Evento>();
-	public Atleta unnamed_Atleta_;
-
 	public String getNombre() {
 		return this.nombre;
 	}
@@ -18,11 +15,11 @@ public class Equipo {
 	}
 
 	public ArrayList<Atleta> getAtletas() {
-		throw new UnsupportedOperationException();
+		return this.atletas;
 	}
 
 	public void setAtletas(ArrayList<Atleta> atletas) {
-		throw new UnsupportedOperationException();
+		this.atletas = atletas;
 	}
 
 	public Disciplina getDisciplina() {
@@ -34,18 +31,39 @@ public class Equipo {
 	}
 
 	public Equipo() {
-		throw new UnsupportedOperationException();
+
+	}
+	public Equipo(String nombre, Disciplina disciplina){
+		this.nombre = nombre;
+		this.disciplina = disciplina;
 	}
 
-	public void agregarAtleta(Atleta atleta) {
-		throw new UnsupportedOperationException();
+	public Boolean agregarAtleta(Atleta atleta) {
+		for (Atleta atletaexistente : atletas){
+			if (atletaexistente.getNombre().equals(atleta.getNombre())){
+				return false;
+			}
+		}
+		this.atletas.add(atleta);
+		return true;
 	}
 
-	public void eliminarAtleta(Atleta atleta) {
-		throw new UnsupportedOperationException();
+	public Boolean eliminarAtleta(Atleta atleta) {
+		for (Atleta atletaexistente : atletas){
+			if (atletaexistente.getNombre().equals(atleta.getNombre())){
+				this.atletas.remove(atleta);
+				return true;
+			}
+		}
+		return false;
 	}
 
 	public void verInfoEquipo() {
-		throw new UnsupportedOperationException();
+		System.out.println("Nombre de equipo: " + this.nombre);
+		System.out.println("Disciplina: " + this.disciplina.getNombre());
+		System.out.println("Atletas:");
+		for (Atleta atleta : atletas){
+			System.out.println(atleta.getNombre());
+		}
 	}
 }
