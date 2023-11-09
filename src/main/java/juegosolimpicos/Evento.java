@@ -5,10 +5,10 @@ import java.util.ArrayList;
 
 public class Evento {
 	private Disciplina disciplina;
-	private ArrayList<Equipo> equipos;
+	private ArrayList<Equipo> equipos = new ArrayList<Equipo>();
 	private LocalDate fecha;
 
-	private ArrayList<Atleta> atletas;
+	private ArrayList<Atleta> atletas = new ArrayList<Atleta>();
 
 	public Disciplina getDisciplina() {
 		return this.disciplina;
@@ -42,72 +42,62 @@ public class Evento {
 		return atletas;
 	}
 
-	public Evento(Disciplina disciplina, ArrayList<Equipo> equipos, LocalDate fecha){
+	public Evento(Disciplina disciplina, LocalDate fecha){
 		this.disciplina = disciplina;
 		this.fecha = fecha;
-		this.equipos = equipos;
 	}
 
 	public Boolean agregarAtleta(Atleta atleta) {
-		try {
-			for (Atleta atletaexistente : atletas){
-				if (atletaexistente.getNombre().equals(atleta.getNombre())){
+		if (atletas!=null) {
+			for (Atleta atletaexistente : atletas) {
+				if (atletaexistente.getNombre().equals(atleta.getNombre())) {
 					return false;
 				}
 			}
-			this.atletas.add(atleta);
-			return true;
 		}
-		catch (Exception e) {
-			return false;
-		}
+		this.atletas.add(atleta);
+		return true;
 	}
 
 	public Boolean eliminarAtleta(Atleta atleta) {
-		try {
-			for (Atleta atletaexistente : atletas){
-				if (atletaexistente.getNombre().equals(atleta.getNombre())){
+		if (atletas!=null) {
+			for (Atleta atletaexistente : atletas) {
+				if (atletaexistente.getNombre().equals(atleta.getNombre())) {
 					this.atletas.remove(atleta);
 					return true;
 				}
 			}
-			return false;
-		} catch (Exception e){
-			return false;
 		}
+		return false;
 	}
 
 	public Boolean agregarEquipo(Equipo equipo) {
-		try {
-			for (Equipo equipoexistente : equipos){
-				if (equipoexistente.getNombre().equals(equipo.getNombre())){
+		if (equipos != null) {
+			for (Equipo equipoexistente : equipos) {
+				if (equipoexistente.getNombre().equals(equipo.getNombre())) {
 					return false;
 				}
 			}
-			this.equipos.add(equipo);
-			return true;
-		} catch (Exception e) {
-			return false;
 		}
+		this.equipos.add(equipo);
+		return true;
 	}
 
 	public Boolean eliminarEquipo(Equipo equipo) {
-		try {
-			for (Equipo equipoexistente : equipos){
-				if (equipoexistente.getNombre().equals(equipo.getNombre())){
+		if (equipos!=null) {
+			for (Equipo equipoexistente : equipos) {
+				if (equipoexistente.getNombre().equals(equipo.getNombre())) {
 					this.equipos.remove(equipoexistente);
 					return true;
 				}
 			}
-			return false;
-		} catch (Exception e){
-			return false;
 		}
+		return false;
 	}
 
 	public void verInfoEvento() {
 		if ((this.disciplina!=null)&&(this.fecha!=null)) {
-			System.out.println("Disciplina: " + this.disciplina);
+			System.out.println("Disciplina: " + this.disciplina.getNombre());
 			System.out.println("Fecha: " + this.fecha);
 			System.out.println("Equipos: ");
 		}

@@ -8,7 +8,7 @@ public class Atleta {
 	private String nombre;
 	private String pais;
 	private int edad = 0;
-	private ArrayList<Disciplina> disciplinas;
+	private ArrayList<Disciplina> disciplinas = new ArrayList<>();
 	public String getNombre() {
 		return this.nombre;
 	}
@@ -50,17 +50,16 @@ public class Atleta {
 	}
 
 	public Boolean agregarDisciplina(Disciplina disciplina) {
-		try {
-			for (Disciplina disciplinaExistente : disciplinas){
-				if (disciplinaExistente.getNombre().equals(disciplina.getNombre())){
+		if (this.disciplinas!=null) {
+			for (Disciplina disciplinaExistente : disciplinas) {
+				if (disciplinaExistente.getNombre().equals(disciplina.getNombre())) {
 					return false;
 				}
 			}
-			this.disciplinas.add(disciplina);
-			return true;
-		} catch (Exception e){
-			return false;
 		}
+		this.disciplinas.add(disciplina);
+		disciplina.setNumeroparticipantes(disciplina.getNumeroparticipantes() + 1);
+		return true;
 	}
 
 	public Boolean eliminarDisciplina(Disciplina disciplina) {
@@ -85,8 +84,10 @@ public class Atleta {
 			System.out.println("Edad: " + this.edad);
 		}
 		System.out.println("Disciplinas:");
-		for (Disciplina disciplina : disciplinas){
-			System.out.println(disciplina.getNombre());
+		if (this.disciplinas!=null) {
+			for (Disciplina disciplina : disciplinas) {
+				System.out.println(disciplina.getNombre());
+			}
 		}
 	}
 }
