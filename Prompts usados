@@ -1,0 +1,22 @@
+1. Este fragmento de código tiene un método que agrega un elemento de
+una lista, comparando un atributo del elemento con su equivalente
+para agregarlo si es que NO está. Devuelve true si lo logra agregar.
+
+¿Podrías indicarme qué errores podrían ocurrir con este método?
+
+public Boolean agregarDisciplina(Disciplina disciplina) {
+		for (Disciplina disciplinaExistente : disciplinas){
+			if (disciplinaExistente.getNombre().equals(disciplina.getNombre())){
+				return false;
+			}
+		}
+		this.disciplinas.add(disciplina);
+		return true;
+	}
+
+R: básicamente, me señaló que se romperá si algún atributo es null
+
+2. ¿Me muestras la estructura básica del try-catch? (se me había olvidado)
+
+R: un ejemplo de try-catch
+

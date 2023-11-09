@@ -42,8 +42,6 @@ public class Evento {
 		return atletas;
 	}
 
-	public Evento() {
-	}
 	public Evento(Disciplina disciplina, ArrayList<Equipo> equipos, LocalDate fecha){
 		this.disciplina = disciplina;
 		this.fecha = fecha;
@@ -51,24 +49,32 @@ public class Evento {
 	}
 
 	public Boolean agregarAtleta(Atleta atleta) {
-		for (Atleta atletaexistente : atletas){
-			if (atletaexistente.getNombre().equals(atleta.getNombre())){
-				return false;
+		try {
+			for (Atleta atletaexistente : atletas){
+				if (atletaexistente.getNombre().equals(atleta.getNombre())){
+					return false;
+				}
 			}
+			this.atletas.add(atleta);
+			return true;
 		}
-		this.atletas.add(atleta);
-		return true;
+		catch (Exception e) {
+			return false;
+		}
 	}
 
 	public Boolean eliminarAtleta(Atleta atleta) {
-		for (Atleta atletaexistente : atletas){
-			if (atletaexistente.getNombre().equals(atleta.getNombre())){
-				this.atletas.remove(atleta);
-				return true;
+		try {
+			for (Atleta atletaexistente : atletas){
+				if (atletaexistente.getNombre().equals(atleta.getNombre())){
+					this.atletas.remove(atleta);
+					return true;
+				}
 			}
+			return false;
+		} catch (Exception e){
+			return false;
 		}
-
-		return false;
 	}
 
 	public Boolean agregarEquipo(Equipo equipo) {
@@ -92,6 +98,15 @@ public class Evento {
 	}
 
 	public void verInfoEvento() {
-		throw new UnsupportedOperationException();
+		System.out.println("Disciplina: " + this.disciplina);
+		System.out.println("Fecha: " + this.fecha);
+		System.out.println("Equipos: ");
+		for (Equipo equipo : equipos){
+			System.out.println(equipo.getNombre());
+		}
+		System.out.println("Atletas: ");
+		for (Atleta atleta : atletas){
+			System.out.println(atleta.getNombre());
+		}
 	}
 }

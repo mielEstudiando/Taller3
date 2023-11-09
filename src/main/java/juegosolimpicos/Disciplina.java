@@ -31,9 +31,6 @@ public class Disciplina {
 		this.recordmundial = recordmundial;
 	}
 
-	public Disciplina() {
-	}
-
 	public Disciplina(String nombre, String recordmundial, int numeroparticipantes) {
 		this.nombre = nombre;
 		this.numeroparticipantes = numeroparticipantes;

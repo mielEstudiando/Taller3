@@ -1,5 +1,7 @@
 package juegosolimpicos;
 
+import com.sun.jdi.event.ExceptionEvent;
+
 import java.util.ArrayList;
 
 public class Atleta {
@@ -28,7 +30,9 @@ public class Atleta {
 	}
 
 	public void setEdad(int edad) {
-		this.edad = edad;
+		if ((edad<120)&&(edad>1)) {
+			this.edad = edad;
+		}
 	}
 
 	public ArrayList<Disciplina> getDisciplinas() {
@@ -39,8 +43,6 @@ public class Atleta {
 		this.disciplinas = disciplinas;
 	}
 
-	public Atleta() {
-	}
 	public Atleta(String nombre, String pais, int edad) {
 		this.nombre = nombre;
 		this.pais = pais;
@@ -48,23 +50,32 @@ public class Atleta {
 	}
 
 	public Boolean agregarDisciplina(Disciplina disciplina) {
-		for (Disciplina disciplinaExistente : disciplinas){
-			if (disciplinaExistente.getNombre().equals(disciplina.getNombre())){
-				return false;
+		try {
+			for (Disciplina disciplinaExistente : disciplinas){
+				if (disciplinaExistente.getNombre().equals(disciplina.getNombre())){
+					return false;
+				}
 			}
+			this.disciplinas.add(disciplina);
+			return true;
+		} catch (Exception e){
+			return false;
 		}
-		this.disciplinas.add(disciplina);
-		return true;
 	}
 
 	public Boolean eliminarDisciplina(Disciplina disciplina) {
-		for (Disciplina disciplinaExistente : disciplinas){
-			if (disciplinaExistente.getNombre().equals(disciplina.getNombre())){
-				this.disciplinas.remove(disciplina);
-				return true;
+		try {
+			for (Disciplina disciplinaExistente : disciplinas){
+				if (disciplinaExistente.getNombre().equals(disciplina.getNombre())){
+					this.disciplinas.remove(disciplina);
+					return true;
+				}
 			}
+			return false;
 		}
-		return false;
+		catch (Exception e){
+			return false;
+		}
 	}
 
 	public void verInfoAtleta() {

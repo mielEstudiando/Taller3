@@ -30,32 +30,37 @@ public class Equipo {
 		this.disciplina = disciplina;
 	}
 
-	public Equipo() {
-
-	}
 	public Equipo(String nombre, Disciplina disciplina){
 		this.nombre = nombre;
 		this.disciplina = disciplina;
 	}
 
 	public Boolean agregarAtleta(Atleta atleta) {
-		for (Atleta atletaexistente : atletas){
-			if (atletaexistente.getNombre().equals(atleta.getNombre())){
-				return false;
+		try {
+			for (Atleta atletaexistente : atletas){
+				if (atletaexistente.getNombre().equals(atleta.getNombre())){
+					return false;
+				}
 			}
+			this.atletas.add(atleta);
+			return true;
+		} catch (Exception e){
+			return false;
 		}
-		this.atletas.add(atleta);
-		return true;
 	}
 
 	public Boolean eliminarAtleta(Atleta atleta) {
-		for (Atleta atletaexistente : atletas){
-			if (atletaexistente.getNombre().equals(atleta.getNombre())){
-				this.atletas.remove(atleta);
-				return true;
+		try {
+			for (Atleta atletaexistente : atletas){
+				if (atletaexistente.getNombre().equals(atleta.getNombre())){
+					this.atletas.remove(atleta);
+					return true;
+				}
 			}
+			return false;
+		} catch (Exception e){
+			return false;
 		}
-		return false;
 	}
 
 	public void verInfoEquipo() {
