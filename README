@@ -1,1 +1,15 @@
 Millarayen Ferrada
+
+"Para mantener un control interno de todos los
+atletas que participan en los distintos deportes
+de los juegos panamericanos, se requiere un programa
+que permita el registro de los deportistas, sus
+disciplinas, etc. "
+
+plan rápido:
+1. identificación de clases, y sus relaciones
+2. creación de código acorde
+
+Es una problemática de registro interno, por lo cual, la
+solución debería ir por la creación de multiples objetos
+relacionados entre si, y una manera de crearlos y manejarlos
