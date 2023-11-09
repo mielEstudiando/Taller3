@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Disciplina {
 	private String nombre;
-	private int numeroparticipantes;
+	private int numeroparticipantes = 0;
 	private String recordmundial;
 
 	public String getNombre() {
@@ -20,7 +20,7 @@ public class Disciplina {
 	}
 
 	public void setNumeroparticipantes(int numeroparticipantes) {
-		this.numeroparticipantes = numeroparticipantes;
+		if (numeroparticipantes>=0) this.numeroparticipantes = numeroparticipantes;
 	}
 
 	public String getRecordmundial() {
@@ -31,15 +31,16 @@ public class Disciplina {
 		this.recordmundial = recordmundial;
 	}
 
-	public Disciplina(String nombre, String recordmundial, int numeroparticipantes) {
+	public Disciplina(String nombre, String recordmundial) {
 		this.nombre = nombre;
-		this.numeroparticipantes = numeroparticipantes;
 		this.recordmundial = recordmundial;
 	}
 
 	public void verInfoDisciplina() {
-		System.out.println("Nombre de disciplina: " + this.nombre);
-		System.out.println("Número de participantes: " + this.numeroparticipantes);
-		System.out.println("Record mundial: " + this.recordmundial);
+		if ((this.nombre!=null)&&(this.recordmundial!=null)) {
+			System.out.println("Nombre de disciplina: " + this.nombre);
+			System.out.println("Número de participantes: " + this.numeroparticipantes);
+			System.out.println("Record mundial: " + this.recordmundial);
+		}
 	}
 }

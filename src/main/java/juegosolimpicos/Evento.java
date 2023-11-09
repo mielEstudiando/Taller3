@@ -78,35 +78,53 @@ public class Evento {
 	}
 
 	public Boolean agregarEquipo(Equipo equipo) {
-		for (Equipo equipoexistente : equipos){
-			if (equipoexistente.getNombre().equals(equipo.getNombre())){
-				return false;
+		try {
+			for (Equipo equipoexistente : equipos){
+				if (equipoexistente.getNombre().equals(equipo.getNombre())){
+					return false;
+				}
 			}
+			this.equipos.add(equipo);
+			return true;
+		} catch (Exception e) {
+			return false;
 		}
-		this.equipos.add(equipo);
-		return true;
 	}
 
 	public Boolean eliminarEquipo(Equipo equipo) {
-		for (Equipo equipoexistente : equipos){
-			if (equipoexistente.getNombre().equals(equipo.getNombre())){
-				this.equipos.remove(equipoexistente);
-				return true;
+		try {
+			for (Equipo equipoexistente : equipos){
+				if (equipoexistente.getNombre().equals(equipo.getNombre())){
+					this.equipos.remove(equipoexistente);
+					return true;
+				}
 			}
+			return false;
+		} catch (Exception e){
+			return false;
 		}
-		return false;
 	}
 
 	public void verInfoEvento() {
-		System.out.println("Disciplina: " + this.disciplina);
-		System.out.println("Fecha: " + this.fecha);
-		System.out.println("Equipos: ");
-		for (Equipo equipo : equipos){
-			System.out.println(equipo.getNombre());
+		if ((this.disciplina!=null)&&(this.fecha!=null)) {
+			System.out.println("Disciplina: " + this.disciplina);
+			System.out.println("Fecha: " + this.fecha);
+			System.out.println("Equipos: ");
+		}
+		if (this.equipos!=null) {
+			for (Equipo equipo : equipos) {
+				if (equipo.getNombre()!=null) {
+					System.out.println(equipo.getNombre());
+				}
+			}
 		}
 		System.out.println("Atletas: ");
-		for (Atleta atleta : atletas){
-			System.out.println(atleta.getNombre());
+		if (this.atletas!=null) {
+			for (Atleta atleta : atletas) {
+				if (atleta!=null) {
+					System.out.println(atleta.getNombre());
+				}
+			}
 		}
 	}
 }

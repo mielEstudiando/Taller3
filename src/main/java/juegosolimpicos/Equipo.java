@@ -64,11 +64,15 @@ public class Equipo {
 	}
 
 	public void verInfoEquipo() {
-		System.out.println("Nombre de equipo: " + this.nombre);
-		System.out.println("Disciplina: " + this.disciplina.getNombre());
+		if ((this.nombre!=null)&&(this.disciplina!=null)) {
+			System.out.println("Nombre de equipo: " + this.nombre);
+			System.out.println("Disciplina: " + this.disciplina.getNombre());
+		}
 		System.out.println("Atletas:");
-		for (Atleta atleta : atletas){
-			System.out.println(atleta.getNombre());
+		if (this.atletas!=null) {
+			for (Atleta atleta : atletas) {
+				if (atleta.getNombre()!=null) System.out.println(atleta.getNombre());
+			}
 		}
 	}
 }

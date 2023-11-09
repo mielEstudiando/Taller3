@@ -7,7 +7,7 @@ import java.util.ArrayList;
 public class Atleta {
 	private String nombre;
 	private String pais;
-	private int edad;
+	private int edad = 0;
 	private ArrayList<Disciplina> disciplinas;
 	public String getNombre() {
 		return this.nombre;
@@ -46,7 +46,7 @@ public class Atleta {
 	public Atleta(String nombre, String pais, int edad) {
 		this.nombre = nombre;
 		this.pais = pais;
-		this.edad = edad;
+		if ((edad>1)&&(edad<120)) this.edad = edad;
 	}
 
 	public Boolean agregarDisciplina(Disciplina disciplina) {
@@ -79,9 +79,11 @@ public class Atleta {
 	}
 
 	public void verInfoAtleta() {
-		System.out.println("Nombre: " + this.nombre);
-		System.out.println("Pais: " + this.pais);
-		System.out.println("Edad: " + this.edad);
+		if ((this.nombre!=null)&&(this.pais!=null)&&(this.edad>=0)) {
+			System.out.println("Nombre: " + this.nombre);
+			System.out.println("Pais: " + this.pais);
+			System.out.println("Edad: " + this.edad);
+		}
 		System.out.println("Disciplinas:");
 		for (Disciplina disciplina : disciplinas){
 			System.out.println(disciplina.getNombre());
